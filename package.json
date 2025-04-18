@@ -1,0 +1,59 @@
+{
+    "name": "continuedfraction.js",
+    "title": "ContinuedFraction.js",
+    "version": "0.0.1",
+    "homepage": "https://github.com/rawify/ContinuedFraction.js",
+    "bugs": "https://github.com/rawify/ContinuedFraction.js/issues",
+    "description": "The RAW continued fractions library",
+    "keywords": [
+        "math",
+        "continued fraction",
+        "fraction",
+        "bigint"
+    ],
+    "private": false,
+    "main": "./dist/continuedfraction.js",
+    "module": "./dist/continuedfraction.mjs",
+    "types": "./continuedfraction.d.ts",
+    "browser": "./dist/continuedfraction.min.js",
+    "unpkg": "./dist/continuedfraction.min.js",
+    "readmeFilename": "README.md",
+    "exports": {
+        ".": {
+            "types": "./continuedfraction.d.ts",
+            "require": "./dist/continuedfraction.js",
+            "import": "./dist/continuedfraction.mjs"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:rawify/ContinuedFraction.js.git"
+    },
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/rawify"
+    },
+    "author": {
+        "name": "Robert Eisele",
+        "email": "robert@raw.org",
+        "url": "https://raw.org/"
+    },
+    "license": "MIT",
+    "engines": {
+        "node": "*"
+    },
+    "directories": {
+        "test": "tests"
+    },
+    "scripts": {
+        "build": "crude-build ContinuedFraction",
+        "test": "mocha tests/*.js"
+    },
+    "devDependencies": {
+        "crude-build": "^0.1.0",
+        "mocha": "^11.1.0"
+    },
+    "dependencies": {
+        "fraction.js": "^5.2.2"
+    }
+}
