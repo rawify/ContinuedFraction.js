@@ -75,27 +75,37 @@ Import the static utility class and use its generators and evaluator:
 const sqrtGen = ContinuedFraction.sqrt(23);
 console.log(sqrtGen.next().value); // 4
 console.log(sqrtGen.next().value); // 1, 3, 1, 8, …
+````
 
+```javascript
 // 2) Continued‑fraction of a decimal
 let cnt = 0;
 for (let piCf of ContinuedFraction.fromNumber(Math.PI)) {
   console.log(piCf);
   if (cnt++ >= 10) break;
 }
+````
 
+```javascript
 // 3) Golden ratio φ terms
 const phiGen = ContinuedFraction.PHI();
 console.log(phiGen.next().value); // 1, and forever 1…
+````
 
+```javascript
 // 4) Evaluate the first 10 terms of e’s CF to a Fraction
 const approxE = ContinuedFraction.eval(ContinuedFraction.E, 10);
 console.log(approxE.toString()); // e ≈ “193/71”
+````
 
+```javascript
 // 5) Generalized CF for π, 4/π
 const genPi = ContinuedFraction.PI();
 console.log(genPi.next().value);   // { a: 3, b: 0 }
 console.log(genPi.next().value);   // { a: 6, b: 1 }
+````
 
+```javascript
 // 6) Continued‑fraction from two integers
 const halfCf = ContinuedFraction.fromFraction(1, 2);
 console.log([...halfCf]); // [0, 2]
@@ -112,7 +122,7 @@ console.log([...halfCf]); // [0, 2]
 | `FOUR_OVER_PI()`         | `Generator<CFTerm>`                                               | Generalized CF terms for 4/π                                            |
 | `PI()`                   | `Generator<CFTerm>`                                               | Generalized CF terms for π                                              |
 | `E()`                    | `Generator<number>`                                               | CF expansion of e                                                       |
-| `eval(generator, steps)` | `(Generator|() => Generator, steps?: number) ⇒ Fraction`          | Evaluate (generalized) continued fraction to a `Fraction` approximation |
+| `eval(generator, steps)` | `Generator (() => Generator, steps?: number) ⇒ Fraction`          | Evaluate (generalized) continued fraction to a `Fraction` approximation |
 
 ## Coding Style
 
