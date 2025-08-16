@@ -1,6 +1,25 @@
-import Fraction = require('fraction.js');
+import type Fraction from 'fraction.js';
 
+/**
+ * A term of a generalized continued fraction.
+ */
+export interface CFTerm {
+    /** The aₙ coefficient */
+    a: number;
+    /** The bₙ coefficient */
+    b: number;
+}
+
+/**
+ * Utility class for generating continued-fraction expansions of various constants.
+ * All methods are static.
+ */
 declare class ContinuedFraction {
+    /**
+     * Infinite generator for the continued‐fraction terms of √N.
+     * @param N Integer whose square‐root CF expansion is desired (N ≥ 0)
+     * @yields Next continued‐fraction term of √N
+     */
     static sqrt(N: number): Generator<number, void, unknown>;
 
     /**
@@ -25,10 +44,10 @@ declare class ContinuedFraction {
     static PHI(): Generator<number, void, unknown>;
 
     /** Infinite generator for the generalized continued‐fraction terms of 4/π. */
-    static FOUR_OVER_PI(): Generator<ContinuedFraction.CFTerm, void, unknown>;
+    static FOUR_OVER_PI(): Generator<CFTerm, void, unknown>;
 
     /** Infinite generator for the generalized continued‐fraction terms of π. */
-    static PI(): Generator<ContinuedFraction.CFTerm, void, unknown>;
+    static PI(): Generator<CFTerm, void, unknown>;
 
     /** Infinite generator of e = [2; 1, 2, 1, 1, 4, 1, …]. */
     static E(): Generator<number, void, unknown>;
@@ -41,22 +60,10 @@ declare class ContinuedFraction {
      */
     static eval(
         generator:
-            | Generator<number | ContinuedFraction.CFTerm, any, any>
-            | (() => Generator<number | ContinuedFraction.CFTerm, any, any>),
+            | Generator<number | CFTerm, any, any>
+            | (() => Generator<number | CFTerm, any, any>),
         steps?: number
     ): Fraction;
 }
 
-declare namespace ContinuedFraction {
-    /**
-     * A term of a generalized continued fraction.
-     */
-    interface CFTerm {
-        /** The aₙ coefficient */
-        a: number;
-        /** The bₙ coefficient */
-        b: number;
-    }
-}
-
-export = ContinuedFraction;
+export { ContinuedFraction as default, ContinuedFraction };

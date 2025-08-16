@@ -1,10 +1,10 @@
 {
     "name": "continuedfraction.js",
     "title": "ContinuedFraction.js",
-    "version": "0.0.1",
+    "version": "0.0.2",
+    "description": "The RAW continued fractions library",
     "homepage": "https://github.com/rawify/ContinuedFraction.js",
     "bugs": "https://github.com/rawify/ContinuedFraction.js/issues",
-    "description": "The RAW continued fractions library",
     "keywords": [
         "math",
         "continued fraction",
@@ -14,20 +14,41 @@
     "private": false,
     "main": "./dist/continuedfraction.js",
     "module": "./dist/continuedfraction.mjs",
-    "types": "./continuedfraction.d.ts",
     "browser": "./dist/continuedfraction.min.js",
     "unpkg": "./dist/continuedfraction.min.js",
-    "readmeFilename": "README.md",
+    "types": "./continuedfraction.d.ts",
     "exports": {
         ".": {
-            "types": "./continuedfraction.d.ts",
-            "require": "./dist/continuedfraction.js",
-            "import": "./dist/continuedfraction.mjs"
+            "import": {
+                "types": "./continuedfraction.d.mts",
+                "default": "./dist/continuedfraction.mjs"
+            },
+            "require": {
+                "types": "./continuedfraction.d.ts",
+                "default": "./dist/continuedfraction.js"
+            },
+            "browser": {
+                "types": "./continuedfraction.d.ts",
+                "default": "./dist/continuedfraction.min.js"
+            },
+            "default": {
+                "types": "./continuedfraction.d.ts",
+                "default": "./dist/continuedfraction.js"
+            }
+        },
+        "./package.json": "./package.json"
+    },
+    "typesVersions": {
+        "<4.7": {
+            "*": [
+                "continuedfraction.d.ts"
+            ]
         }
     },
+    "sideEffects": false,
     "repository": {
         "type": "git",
-        "url": "git@github.com:rawify/ContinuedFraction.js.git"
+        "url": "git+ssh://git@github.com/rawify/ContinuedFraction.js.git"
     },
     "funding": {
         "type": "github",
@@ -50,8 +71,8 @@
         "test": "mocha tests/*.js"
     },
     "devDependencies": {
-        "crude-build": "^0.1.0",
-        "mocha": "^11.1.0"
+        "crude-build": "^0.1.2",
+        "mocha": "^11.7.1"
     },
     "dependencies": {
         "fraction.js": "^5.2.2"
